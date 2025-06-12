@@ -25,7 +25,7 @@ const PORT = 4000;
 // Configuración de la conexión MySQL (ajusta el puerto a 3308 si tu servidor MySQL corre en ese puerto)
 const pool = mysql.createPool({
   host:            'localhost',    // o 'localhost'
-  port:            3308,           // Puerto donde escucha tu MySQL
+  port:            3307,           // Puerto donde escucha tu MySQL
   user:            'root',         // Cambia a tu usuario
   password:        'Pancho123',             // Cambia a tu contraseña si aplica
   database:        'db_spelling',
