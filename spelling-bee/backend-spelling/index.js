@@ -85,6 +85,7 @@ app.get('/api/details/:level/:id', async (req, res) => {
 });
 
 // Inicia el servidor
-app.listen(PORT, () => {
-  console.log(`Backend corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Backend corriendo en http://0.0.0.0:${PORT}`);
 });
+

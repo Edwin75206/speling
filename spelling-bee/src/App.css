@@ -1,38 +1,147 @@
-.App {
+body {
+  margin: 0;
+  background: #FFFDE7;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.app-container {
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 2rem; /* 👈 espacio reducido arriba y abajo */
+  gap: 1rem;
+  margin-top: 0; /* 👈 Esto asegura que no haya separación arriba */
+}
+
+
+.app-title-box {
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-title {
+  font-size: 3.2rem;
+  color: #7B1B1B;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-subtitle {
+  font-size: 1.2rem;
+  color: #4E342E;
+  font-weight: 500;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.levels {
+  margin-top: 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.level-btn {
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  border-radius: 1rem;
+  background: #FBC02D;
+  color: #4E342E;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.level-btn:hover {
+  transform: scale(1.05);
+  background: #F9A825;
+}
+
+.card {
+  background: #F4D39B;
+  border-radius: 2rem;
+  padding: 3rem 4rem;
+  max-width: 900px;
+  width: 90%;
+  margin: 0.1rem auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: all 0.4s ease-in-out;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.card.expanded {
+  padding: 4rem 5rem;
+}
+
+.word {
+  font-size: 7rem;
+  color: #4E342E;
+  font-weight: bold;
+  animation: fadeIn 0.6s ease-in-out;
+  margin: 1rem 0;
+}
+
+.label {
+  font-size: 2rem;
+  color: #7B1B1B;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.text {
+  font-size: 2rem;
+  line-height: 1.8;
+  color: #4E342E;
+  margin: 1rem 0;
+}
+
+.info {
+  font-size: 1.5rem;
+  color: #6D4C41;
+  font-style: italic;
+}
+
+.instructions {
+  font-size: 1.2rem;
+  color: #555;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.instructions-box {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 400px;
+  margin: 1.5rem auto 0 auto;
+  font-size: 1rem;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.logo-coordinacion {
+  width: 210px;
+  height: auto;
+}
+
+.logo-utxj {
+  width: 250px;
+  height: auto;
 }
