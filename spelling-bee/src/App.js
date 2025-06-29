@@ -71,27 +71,22 @@ function App() {
   }, [mode, current, previous, used]);
 
   if (!mode) {
-    return (
-      <div className="app-container">
-        <div className="hex-bg" />
-        <header className="app-header">
-          <img src="./images/logo-idiomas.png" alt="Idiomas Logo" className="logo-coordinacion" />
-          <div className="app-title-box">
-            <h1 className="app-title">Spelling Bee Contest</h1>
-            <p className="app-subtitle">Coordinación de Idiomas - UTXJ</p>
-          </div>
-          <img src="./images/logo-utxj.png" alt="UTXJ Logo" className="logo-utxj" />
-        </header>
-        <div className="levels">
-          {levels.map(lvl => (
-            <button key={lvl} onClick={() => setMode(lvl)} className="level-btn">
-              Level {lvl}
-            </button>
-          ))}
-        </div>
+  return (
+    <div className="app-container home-bg">
+      <div className="hex-bg" />
+      <header className="app-header">
+      </header>
+      <div className="levels">
+        {levels.map(lvl => (
+          <button key={lvl} onClick={() => setMode(lvl)} className="level-btn">
+            Level {lvl}
+          </button>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   return (
     <div className="app-container">

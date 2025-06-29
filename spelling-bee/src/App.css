@@ -44,29 +44,31 @@ body {
 }
 
 .levels {
-  margin-top: 2rem;
+  margin-top: 25rem; /* Espacio entre el header y los botones */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem; /* Espacio entre los botones */
 }
 
 .level-btn {
-  padding: 1rem 2rem;
-  font-size: 1.3rem;
-  border-radius: 1rem;
+  padding: 1.5rem 3rem;         /* 👈 Botón más grande */
+  font-size: 2rem;              /* 👈 Texto más grande */
+  border-radius: 1.5rem;        /* Bordes más redondeados */
   background: #FBC02D;
   color: #4E342E;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
   transition: transform 0.2s;
+  margin-top: 1rem;             /* 👈 Separación individual si se quiere */
 }
 
 .level-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   background: #F9A825;
 }
+
 
 .card {
   background: #F4D39B;
@@ -139,7 +141,15 @@ body {
 .logo-coordinacion {
   width: 210px;
   height: auto;
+}.home-bg {
+  background-image: url('./images/Background.1.png'); /* asegúrate de que esté en la ruta correcta */
+  background-size: cover;            /* ✅ Llena el contenedor completo */
+  background-position: center top;   /* ✅ Muestra la parte superior si es decorativa */
+  background-repeat: no-repeat;      /* ✅ No se repite */
+  background-attachment: fixed;      /* 🎯 Efecto tipo "parallax" sutil opcional */
 }
+
+
 
 .logo-utxj {
   width: 250px;
