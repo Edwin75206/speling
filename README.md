@@ -1,6 +1,3 @@
-Aquí tienes el `README.md` completo y bien estructurado, incluyendo la **estructura real de carpetas** según tu repositorio [`spelling/spelling-bee`](https://github.com/Edwin75206/spelling/tree/main/spelling-bee):
-
----
 
 ````markdown
 # 🐝 Spelling Bee
