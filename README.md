@@ -1,185 +1,163 @@
+Aquí tienes el `README.md` completo y bien estructurado, incluyendo la **estructura real de carpetas** según tu repositorio [`spelling/spelling-bee`](https://github.com/Edwin75206/spelling/tree/main/spelling-bee):
+
+---
+
 ````markdown
-# Spelling Bee
+# 🐝 Spelling Bee
 
-Aplicación web para practicar ortografía en inglés (niveles A2 y B1), con ejemplos de uso y definiciones.
-
----
-
-## 📋 Tabla de contenidos
-
-- [Descripción](#descripción)  
-- [Características](#características)  
-- [Tecnologías](#tecnologías)  
-- [Prerequisitos](#prerequisitos)  
-- [Instalación](#instalación)  
-  - [Backend](#backend)  
-  - [Frontend](#frontend)  
-- [Estructura de carpetas](#estructura-de-carpetas)  
-- [Uso](#uso)  
-- [Contribuir](#contribuir)  
-- [Licencia](#licencia)  
-- [Contacto](#contacto)  
+Aplicación web desarrollada en React + Node.js para practicar ortografía en inglés, enfocada en los niveles A2 y B1 del MCER. Permite mostrar palabras aleatorias, sus definiciones y ejemplos en contexto.
 
 ---
 
-## 📝 Descripción
+## 📌 Descripción
 
-Spelling Bee es una pequeña aplicación en la que el usuario selecciona un nivel (A2 o B1), obtiene una palabra aleatoria en inglés y puede ver su definición y un ejemplo de uso. Ideal para practicar vocabulario y ortografía de forma dinámica.
-
----
-
-## ✨ Características
-
-- Selección de nivel de dificultad: **A2** o **B1**.  
-- Generación aleatoria de palabras sin repetir durante la sesión.  
-- Visualización de definición y ejemplo de uso.  
-- Interfaz intuitiva y responsive.  
+Este proyecto está diseñado para mejorar el aprendizaje del vocabulario en inglés mediante un formato tipo “Spelling Bee”. El usuario selecciona el nivel deseado, visualiza palabras aleatorias y puede ver ejemplos y definiciones de cada una.
 
 ---
 
-## 🛠 Tecnologías
+## 🚀 Tecnologías utilizadas
 
-- **Frontend**: React, Axios  
-- **Backend**: Node.js, Express, MySQL  
-- **Base de datos**: MySQL (vista `spelling_all`)  
-- **CORS**: Para permitir comunicación entre frontend y backend  
+### Frontend
+- React
+- Axios
+- CSS nativo (estilo moderno y responsivo)
 
----
-
-## ⚙️ Prerequisitos
-
-- **Node.js** v14+  
-- **npm** o **yarn**  
-- **MySQL** (con las tablas `a2spelling` y `b1spelling` creadas)  
+### Backend
+- Node.js
+- Express
+- MySQL
+- CORS
 
 ---
 
-## 🚀 Instalación
+## 📁 Estructura de carpetas
 
-Clona el repositorio y ponlo en marcha localmente:
+```plaintext
+spelling/
+└── spelling-bee/                # Proyecto principal
+    ├── backend-spelling/       # Backend con Express y MySQL
+    │   └── index.js            # Servidor con endpoints para niveles, palabras y detalles
+    ├── public/                 # Archivos públicos de CRA (favicon, index.html, etc.)
+    ├── src/                    # Código fuente React
+    │   ├── services/
+    │   │   └── api.js          # Llamadas Axios al backend
+    │   ├── App.jsx             # Componente principal de la app
+    │   ├── index.js            # Punto de entrada de React
+    │   └── index.css           # Estilos globales
+    ├── .gitignore              # Ignora node_modules, build, etc.
+    ├── BaseDeDatos.sql         # Script con la vista unificada spelling_all
+    ├── README.md               # Este archivo
+    ├── package.json            # Dependencias y scripts (React + backend opcional)
+    └── package-lock.json       # Lockfile de npm
+````
+
+---
+
+## ⚙️ Instalación y uso
+
+### 1. Clonar el repositorio
 
 ```bash
 git clone https://github.com/Edwin75206/spelling.git
-cd spelling
-````
+cd spelling/spelling-bee
+```
 
-### Backend
+### 2. Configurar la base de datos
 
-1. **Crear la vista en MySQL**
-   Antes de arrancar el servidor, importa o ejecuta esta vista para unificar ambas tablas:
+1. Crear las tablas `a2spelling` y `b1spelling` en tu base de datos `db_spelling`.
+2. Luego ejecuta el archivo `BaseDeDatos.sql` o corre este script para crear la vista `spelling_all`:
 
-   ```sql
-   CREATE OR REPLACE VIEW db_spelling.spelling_all AS
-   SELECT 'A2' AS level, Num AS id, WORD AS word,
-          DEFINITION AS definition, EXAMPLE AS example
-     FROM a2spelling
-   UNION ALL
-   SELECT 'B1' AS level, Num AS id, WORD AS word,
-          DEFINITION AS definition, EXAMPLE AS example
-     FROM b1spelling;
-   ```
-2. **Instalar dependencias**
+```sql
+CREATE OR REPLACE VIEW db_spelling.spelling_all AS
+SELECT 'A2' AS level, Num AS id, WORD AS word, DEFINITION AS definition, EXAMPLE AS example FROM a2spelling
+UNION ALL
+SELECT 'B1' AS level, Num AS id, WORD AS word, DEFINITION AS definition, EXAMPLE AS example FROM b1spelling;
+```
+
+---
+
+### 3. Backend
+
+1. Entra a la carpeta del backend:
 
    ```bash
-   npm install express mysql2 cors
+   cd backend-spelling
    ```
-3. **Configurar la conexión**
-   Edita `index.js` (o `server.js`) y ajusta tus credenciales MySQL si es necesario:
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+3. Asegúrate de configurar tu conexión MySQL en `index.js`:
 
    ```js
    const pool = mysql.createPool({
      host: 'localhost',
-     port: 3307,           // o el puerto donde esté tu MySQL
+     port: 3307,        // cambia si es necesario
      user: 'root',
      password: 'Pancho123',
-     database: 'db_spelling',
-     connectionLimit: 10
+     database: 'db_spelling'
    });
    ```
-4. **Iniciar el servidor**
+4. Ejecuta el servidor:
 
    ```bash
    node index.js
    ```
 
-   Quedará escuchando en `http://localhost:4000/api`.
+   El backend escuchará en: `http://localhost:4000/api`
 
-### Frontend
+---
 
-1. **Entrar al directorio del cliente**
+### 4. Frontend
 
-   ```bash
-   cd spelling-bee
-   ```
-2. **Instalar dependencias**
+1. Regresa al root del proyecto (si estás en `backend-spelling/` haz `cd ..`)
+2. Instala las dependencias del frontend:
 
    ```bash
    npm install
    ```
-3. **Configurar la URL base**
-   En `src/services/api.js`, asegúrate de que `baseURL` apunte a tu backend:
-
-   ```js
-   const API = axios.create({ baseURL: 'http://localhost:4000/api' });
-   ```
-4. **Iniciar la aplicación**
+3. Inicia la app:
 
    ```bash
    npm start
    ```
 
-   Se abrirá en `http://localhost:3000`.
+   Abrirá automáticamente `http://localhost:3000`.
 
 ---
 
-## 🗂 Estructura de carpetas
+## 🧪 Cómo se usa
 
-```
-spelling/
-├── index.js             # Servidor Express + configuración MySQL
-├── package.json         # Dependencias backend
-├── spelling-bee/        # Cliente React
-│   ├── public/
-│   └── src/
-│       ├── App.jsx
-│       ├── index.js
-│       ├── index.css
-│       ├── services/
-│       │   └── api.js
-│       └── ...otros estilos e imágenes
-└── README.md            # Este documento
-```
+1. Selecciona un nivel: **A2** o **B1**.
+2. Presiona **"Nueva palabra"** para generar una palabra aleatoria.
+3. Usa los botones **Ejemplo** y **Definición** para obtener más información.
+4. Vuelve al menú inicial con el botón **← Volver**.
 
 ---
 
-## 🎯 Uso
+## 🤝 Contribuciones
 
-1. Elige el nivel de práctica: **A2** o **B1**.
-2. Pulsa **“Nueva palabra”** para obtener un término aleatorio.
-3. Haz clic en **“Ejemplo”** o **“Definición”** para ver más detalles.
-4. Vuelve al menú principal con el botón **← Volver**.
+¡Las contribuciones son bienvenidas!
 
----
-
-## 🤝 Contribuir
-
-1. Haz un fork de este repositorio.
-2. Crea una rama con tu feature (`git checkout -b feature/nombre`).
-3. Realiza tus cambios y haz commit (`git commit -m 'Añade nueva funcionalidad'`).
-4. Haz push a tu rama (`git push origin feature/nombre`).
-5. Abre un Pull Request describiendo tus cambios.
+1. Haz un fork.
+2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
+3. Haz tus cambios y commit: `git commit -m 'Agrega nueva funcionalidad'`
+4. Sube tu rama: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request.
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT.
 
 ---
 
-## 📬 Contacto
+## 👤 Autor
 
-Para dudas o sugerencias, abre un [issue](https://github.com/Edwin75206/spelling/issues) o contáctame en mi perfil de GitHub.
+**Edwin Donovan Castañeda**
+GitHub: [@Edwin75206](https://github.com/Edwin75206)
 
 ```
 ```
