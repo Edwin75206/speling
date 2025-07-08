@@ -199,14 +199,14 @@ function App() {
           }}>
             {!timerActive && timerReady && (
               <span>
-                Presiona <b>T</b> para iniciar: {timer}s
+                  {timer}s
               </span>
             )}
             {timerActive && !timerPaused && (timer > 0 ? `${timer} s` : '¡Tiempo agotado!')}
             {timerActive && timerPaused && (
               <span style={{ color: '#e07b00' }}>⏸ Pausado ({timer} s)</span>
             )}
-            {!timerActive && !timerReady && <span style={{ opacity: 0.5 }}>Cronómetro listo</span>}
+            {!timerActive && !timerReady && <span style={{ opacity: 0.5 }}>TIME OVER</span>}
           </div>
         )}
 
